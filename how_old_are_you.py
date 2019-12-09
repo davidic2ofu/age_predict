@@ -2,6 +2,7 @@ import argparse
 import glob
 import os
 import sys
+import urllib.request
 
 import cv2
 import dlib
@@ -144,13 +145,13 @@ def train_from_db():
 
 
 def get_weight_file_from_repo():
-	print('Getting weight file from repo...')
-	weight_file = get_file(
-		'weights.32-3.73.hdf5',
-		'https://github.com/yu4u/age-gender-estimation/releases/download/v0.5/weights.28-3.73.hdf5',
-		cache_dir=os.getcwd(),
-	)
-	return weight_file
+	if not os.path.exists('./weights.hdf5'):
+		print('Getting weight file from repo...')
+		url = 'https://github.com/davidic2ofu/age_predict/releases/download/0.1/weights.hdf5'
+		filename, _ = urllib.request.urlretrieve(url, 'weights.hdf5')
+	else:
+		filename = 'weights.hdf5'
+	return filename
 
 
 def draw_label(image, point, label, font=cv2.FONT_HERSHEY_SIMPLEX, font_scale=0.8, thickness=1):
