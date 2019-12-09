@@ -1,5 +1,5 @@
-** How Old Are You?
-*** Convolutional Neural Net solves the problem of Human Age Prediction
+## How Old Are You?
+### Convolutional Neural Net solves the problem of Human Age Prediction
 
 wide_resnet.py file and some example code borrowed from:
 - https://github.com/yu4u/age-gender-estimation
